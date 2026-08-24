@@ -209,6 +209,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 const pdfBytes = await pdfDoc.save();
                 convertedPdfBlob = new Blob([pdfBytes], { type: 'application/pdf' });
                 
+                const downloadUrl = URL.createObjectURL(convertedPdfBlob);
+                downloadBtn.href = downloadUrl;
+                downloadBtn.download = 'converted_images.pdf';
+
                 processingState.style.display = 'none';
                 resultsState.style.display = 'block';
             } catch (error) {
@@ -220,22 +224,11 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 100);
     });
 
-    downloadBtn.addEventListener('click', () => {
-        if (!convertedPdfBlob) return;
-        const url = URL.createObjectURL(convertedPdfBlob);
-        const a = document.createElement('a');
-        a.style.display = 'none';
-        a.href = url;
-        a.download = 'converted_images.pdf';
-        document.body.appendChild(a);
-        a.click();
-        setTimeout(() => {
-            if (document.body.contains(a)) document.body.removeChild(a);
-            URL.revokeObjectURL(url);
-        }, 15000);
-    });
-
     startOverBtn.addEventListener('click', () => {
+        if (downloadBtn.href && downloadBtn.href.startsWith('blob:')) {
+            URL.revokeObjectURL(downloadBtn.href);
+            downloadBtn.href = '#';
+        }
         images.forEach(img => URL.revokeObjectURL(img.url));
         images = [];
         convertedPdfBlob = null;

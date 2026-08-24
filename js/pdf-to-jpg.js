@@ -86,13 +86,21 @@ document.addEventListener('DOMContentLoaded', () => {
             }
 
             statusText.textContent = 'Packaging files...';
+            const originalName = (sourcePdfFile && sourcePdfFile.name) ? sourcePdfFile.name.replace('.pdf', '') : 'document';
+            const downloadBtnText = document.getElementById('download-btn-text');
             
             if (totalPages > 1) {
                 zipBlob = await zip.generateAsync({ type: 'blob' });
-                downloadBtn.textContent = 'Download ZIP';
+                const downloadUrl = URL.createObjectURL(zipBlob);
+                downloadBtn.href = downloadUrl;
+                downloadBtn.download = `${originalName}_images.zip`;
+                if (downloadBtnText) downloadBtnText.textContent = 'Download ZIP Archive';
                 resultDesc.textContent = `Successfully converted ${totalPages} pages into JPG images.`;
             } else {
-                downloadBtn.textContent = 'Download JPG';
+                const downloadUrl = URL.createObjectURL(singleImageBlob);
+                downloadBtn.href = downloadUrl;
+                downloadBtn.download = `${originalName}.jpg`;
+                if (downloadBtnText) downloadBtnText.textContent = 'Download JPG Image';
                 resultDesc.textContent = `Successfully converted 1 page into a JPG image.`;
             }
 
@@ -107,33 +115,11 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    downloadBtn.addEventListener('click', () => {
-        let url, filename;
-        const originalName = (sourcePdfFile && sourcePdfFile.name) ? sourcePdfFile.name.replace('.pdf', '') : 'document';
-
-        if (totalPages > 1 && zipBlob) {
-            url = URL.createObjectURL(zipBlob);
-            filename = `${originalName}_images.zip`;
-        } else if (totalPages === 1 && singleImageBlob) {
-            url = URL.createObjectURL(singleImageBlob);
-            filename = `${originalName}.jpg`;
-        } else {
-            return;
-        }
-
-        const a = document.createElement('a');
-        a.style.display = 'none';
-        a.href = url;
-        a.download = filename;
-        document.body.appendChild(a);
-        a.click();
-        setTimeout(() => {
-            if (document.body.contains(a)) document.body.removeChild(a);
-            URL.revokeObjectURL(url);
-        }, 15000);
-    });
-
     startOverBtn.addEventListener('click', () => {
+        if (downloadBtn.href && downloadBtn.href.startsWith('blob:')) {
+            URL.revokeObjectURL(downloadBtn.href);
+            downloadBtn.href = '#';
+        }
         sourcePdfFile = null;
         zipBlob = null;
         singleImageBlob = null;

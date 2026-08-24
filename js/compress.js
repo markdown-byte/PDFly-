@@ -97,6 +97,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
 
                 processingState.style.display = 'none';
+                
+                const downloadUrl = URL.createObjectURL(compressedPdfBlob);
+                const originalName = (sourcePdfFile && sourcePdfFile.name) ? sourcePdfFile.name.replace('.pdf', '') : 'document';
+                downloadBtn.href = downloadUrl;
+                downloadBtn.download = `${originalName}_compressed.pdf`;
+
                 resultsState.style.display = 'block';
             } catch (error) {
                 console.error(error);
@@ -107,21 +113,11 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 100);
     });
 
-    downloadBtn.addEventListener('click', () => {
-        if (!compressedPdfBlob) return;
-        const url = URL.createObjectURL(compressedPdfBlob);
-        const a = document.createElement('a');
-        a.style.display = 'none';
-        a.href = url;
-        const originalName = (sourcePdfFile && sourcePdfFile.name) ? sourcePdfFile.name.replace('.pdf', '') : 'document';
-        a.download = `${originalName}_compressed.pdf`;
-        document.body.appendChild(a);
-        a.click();
-        setTimeout(() => {
-            if (document.body.contains(a)) document.body.removeChild(a);
-            URL.revokeObjectURL(url);
-        }, 15000);
+    startOverBtn.addEventListener('click', () => {
+        if (downloadBtn.href && downloadBtn.href.startsWith('blob:')) {
+            URL.revokeObjectURL(downloadBtn.href);
+            downloadBtn.href = '#';
+        }
+        resetState();
     });
-
-    startOverBtn.addEventListener('click', resetState);
 });

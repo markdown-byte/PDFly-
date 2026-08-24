@@ -144,6 +144,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 const mergedPdfFile = await mergedPdf.save();
                 mergedPdfBlob = new Blob([mergedPdfFile], { type: 'application/pdf' });
                 
+                const downloadUrl = URL.createObjectURL(mergedPdfBlob);
+                downloadBtn.href = downloadUrl;
+                downloadBtn.download = 'merged_document.pdf';
+
                 processingState.style.display = 'none';
                 resultsState.style.display = 'block';
             } catch (error) {
@@ -155,22 +159,11 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 100);
     });
 
-    downloadBtn.addEventListener('click', () => {
-        if (!mergedPdfBlob) return;
-        const url = URL.createObjectURL(mergedPdfBlob);
-        const a = document.createElement('a');
-        a.style.display = 'none';
-        a.href = url;
-        a.download = 'merged_document.pdf';
-        document.body.appendChild(a);
-        a.click();
-        setTimeout(() => {
-            if (document.body.contains(a)) document.body.removeChild(a);
-            URL.revokeObjectURL(url);
-        }, 15000);
-    });
-
     startOverBtn.addEventListener('click', () => {
+        if (downloadBtn.href && downloadBtn.href.startsWith('blob:')) {
+            URL.revokeObjectURL(downloadBtn.href);
+            downloadBtn.href = '#';
+        }
         filesToMerge = [];
         mergedPdfBlob = null;
         resultsState.style.display = 'none';
