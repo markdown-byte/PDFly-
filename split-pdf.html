@@ -3,51 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Split PDF Online — Free PDF Splitter</title>
-    <meta name="description" content="Extract specific pages from your PDF file. Fast, free, and private PDF splitting directly in your browser.">
+    <title>Split PDF Online — Free & Private PDF Page Extractor</title>
+    <meta name="description" content="Extract specific pages or custom ranges from your PDF files. Fast, free, and completely private directly in your browser.">
     <link rel="canonical" href="https://pdftoolkit.com/split-pdf">
     <link rel="stylesheet" href="css/style.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.17.1/pdf-lib.min.js" integrity="sha384-weMABwrltA6jWR8DDe9Jp5blk+tZQh7ugpCsF3JwSA53WZM9/14PjS5LAJNHNjAI" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <style>
-        .split-controls {
-            margin-top: 2rem;
-            text-align: left;
-        }
-        .page-selection {
-            margin-bottom: 1.5rem;
-        }
-        .page-selection label {
-            display: block;
-            margin-bottom: 0.5rem;
-            font-weight: 500;
-        }
-        .page-selection input {
-            width: 100%;
-            padding: 0.75rem;
-            border: 1px solid var(--border-color);
-            border-radius: var(--radius-md);
-            background-color: var(--bg-color);
-            color: var(--text-main);
-            font-size: 1rem;
-        }
-        .file-meta {
-            background-color: var(--bg-color);
-            padding: 1rem;
-            border-radius: var(--radius-md);
-            margin-bottom: 1.5rem;
-            border: 1px solid var(--border-color);
-        }
-        .file-meta strong {
-            color: var(--primary);
-        }
-    </style>
 </head>
 <body>
     <header>
         <div class="container nav-container">
             <a href="index.html" class="logo">
-                <svg class="logo-icon" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><path d="M12 18v-6l-3 3m3-3l3 3"/></svg>
-                PDF Toolkit
+                <div class="logo-badge">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                        <polyline points="14 2 14 8 20 8"/>
+                        <path d="M12 18v-6l-3 3m3-3l3 3"/>
+                    </svg>
+                </div>
+                <span class="logo-text">PDF Toolkit</span>
             </a>
             
             <nav class="nav-links">
@@ -59,92 +32,168 @@
             </nav>
             
             <div class="nav-controls">
-                <button id="theme-toggle" class="icon-btn" aria-label="Toggle dark mode">
+                <button id="theme-toggle" class="icon-btn" aria-label="Toggle dark mode" title="Toggle Theme">
                     <svg id="moon-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
-                    <svg id="sun-icon" style="display: none;" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line></svg>
+                    <svg id="sun-icon" style="display: none;" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
                 </button>
-                <button class="icon-btn hamburger" id="mobile-menu-btn" aria-label="Menu">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+                <button class="icon-btn hamburger" id="mobile-menu-btn" aria-label="Open Menu">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
                 </button>
             </div>
         </div>
     </header>
 
     <main class="tool-page container">
+        <div class="breadcrumb">
+            <a href="index.html">Home</a>
+            <span class="breadcrumb-separator">/</span>
+            <span>Split PDF</span>
+        </div>
+
         <div class="tool-header">
-            <h1>Split PDF</h1>
-            <p>Extract specific pages from your PDF file.</p>
+            <div class="tool-header-badge">Page Extractor</div>
+            <h1>Split PDF Document</h1>
+            <p>Extract specific pages or separate a PDF into custom page ranges easily.</p>
         </div>
 
         <div class="workspace" id="workspace">
             <div id="upload-state">
                 <div class="uploader" id="pdf-uploader">
                     <input type="file" accept=".pdf,application/pdf">
-                    <div class="uploader-icon">
-                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+                    <div class="uploader-icon-box">
+                        <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 22h14a2 2 0 0 0 2-2V7.5L14.5 2H6a2 2 0 0 0-2 2v4"/><polyline points="14 2 14 8 20 8"/><path d="M3 15h6"/><path d="M3 18h6"/></svg>
                     </div>
-                    <div class="uploader-text">Drop your PDF here</div>
-                    <div class="uploader-subtext">or click to choose file</div>
+                    <div class="uploader-title">Drop your PDF here to split</div>
+                    <div class="uploader-subtext">or click anywhere to choose a file from your device</div>
+                    <div class="uploader-btn-fake">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg>
+                        Select PDF Document
+                    </div>
+                    <div class="uploader-badges">
+                        <span class="format-badge">PDF format</span>
+                        <span class="format-badge">Up to 100MB</span>
+                    </div>
                 </div>
                 <div id="error-msg" class="error-message"></div>
-                <div class="privacy-notice">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
-                    Your files stay on your device
+                <div class="privacy-badge-banner">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+                    100% Private · Your file is processed locally
                 </div>
             </div>
 
             <div id="options-state" style="display: none;">
-                <div class="file-meta">
-                    <div>Selected file: <span id="file-name-display"></span></div>
-                    <div>Total pages: <strong id="total-pages-display">...</strong></div>
+                <div class="file-meta-box">
+                    <div class="file-meta-item">
+                        <span>📄 File:</span>
+                        <strong id="file-name-display"></strong>
+                    </div>
+                    <div class="file-meta-item">
+                        <span>📑 Total Pages:</span>
+                        <strong id="total-pages-display" style="color: var(--primary);">...</strong>
+                    </div>
                 </div>
                 
-                <div class="split-controls">
-                    <div class="page-selection">
-                        <label for="page-range">Pages to extract (e.g., 1-5, 8, 11-13)</label>
-                        <input type="text" id="page-range" placeholder="1-5, 8, 11-13" required>
-                    </div>
-                    <div class="controls-bar">
-                        <button class="btn btn-secondary" id="cancel-btn">Cancel</button>
-                        <button class="btn btn-primary" id="split-btn">Split PDF</button>
-                    </div>
+                <div class="page-selection">
+                    <label for="page-range">Pages or ranges to extract (e.g. 1-3, 5, 8-10):</label>
+                    <input type="text" id="page-range" placeholder="e.g. 1-5" required>
+                </div>
+
+                <div class="controls-bar">
+                    <button class="btn btn-secondary" id="cancel-btn">Choose Different File</button>
+                    <button class="btn btn-primary" id="split-btn">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 22h14a2 2 0 0 0 2-2V7.5L14.5 2H6a2 2 0 0 0-2 2v4"/><polyline points="14 2 14 8 20 8"/><path d="M3 15h6"/><path d="M3 18h6"/></svg>
+                        Extract Selected Pages
+                    </button>
                 </div>
             </div>
 
             <div id="processing-state" class="processing-state">
-                <div class="spinner"></div>
+                <div class="spinner-wrapper">
+                    <div class="spinner"></div>
+                </div>
                 <h2>Splitting your PDF...</h2>
+                <p>Extracting requested pages in your browser.</p>
             </div>
 
             <div id="results-state" class="results-state">
-                <div class="success-icon">✓</div>
+                <div class="success-badge-icon">✓</div>
                 <h2>Split Complete!</h2>
-                <p>Your new PDF has been successfully created.</p>
+                <p>Your extracted PDF pages are ready for download.</p>
                 <div class="action-buttons">
-                    <button class="btn btn-primary" id="download-btn">Download PDF</button>
-                    <button class="btn btn-secondary" id="start-over-btn">Start Over</button>
+                    <button class="btn btn-primary" id="download-btn">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                        Download Split PDF
+                    </button>
+                    <button class="btn btn-secondary" id="start-over-btn">Split Another File</button>
                 </div>
             </div>
         </div>
 
         <section class="content-section">
-            <h2>How to split a PDF</h2>
-            <div class="faq-item">
-                <p>1. Upload the PDF document you want to split.</p>
-                <p>2. Once the page count is loaded, enter the pages or page ranges you want to extract (e.g., 1-3, 5).</p>
-                <p>3. Click "Split PDF" and the new document will be generated locally in your browser.</p>
-                <p>4. Download the extracted pages.</p>
+            <h2>
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+                How to Split PDF Pages
+            </h2>
+            <div class="guide-step-list">
+                <div class="guide-step-item">
+                    <div class="guide-step-num">1</div>
+                    <div><strong>Upload the PDF</strong>: Select the document you wish to extract pages from.</div>
+                </div>
+                <div class="guide-step-item">
+                    <div class="guide-step-num">2</div>
+                    <div><strong>Specify pages</strong>: Enter exact page numbers (e.g. <code>2, 4</code>) or intervals (e.g. <code>1-5</code>).</div>
+                </div>
+                <div class="guide-step-item">
+                    <div class="guide-step-num">3</div>
+                    <div><strong>Download result</strong>: Click "Extract Selected Pages" and instantly save your new PDF document.</div>
+                </div>
             </div>
         </section>
     </main>
 
     <footer>
-        <div class="container footer-content">
-            <div class="logo">PDF Toolkit</div>
-            <div class="footer-links">
-                <a href="index.html">Home</a>
+        <div class="container footer-top">
+            <div class="footer-brand">
+                <a href="index.html" class="logo">
+                    <div class="logo-badge">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                            <polyline points="14 2 14 8 20 8"/>
+                            <path d="M12 18v-6l-3 3m3-3l3 3"/>
+                        </svg>
+                    </div>
+                    <span class="logo-text">PDF Toolkit</span>
+                </a>
+                <p>The modern, private, and ultra-fast PDF toolkit built directly into your web browser. Free forever.</p>
             </div>
-            <p style="color: var(--text-muted); font-size: 0.9rem;">&copy; 2026 PDF Toolkit.</p>
+
+            <div class="footer-links-group">
+                <h4>PDF Tools</h4>
+                <ul class="footer-links-list">
+                    <li><a href="merge-pdf.html">Merge PDF</a></li>
+                    <li><a href="split-pdf.html">Split PDF</a></li>
+                    <li><a href="compress-pdf.html">Compress PDF</a></li>
+                    <li><a href="jpg-to-pdf.html">JPG to PDF</a></li>
+                    <li><a href="pdf-to-jpg.html">PDF to JPG</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-links-group">
+                <h4>Security & Privacy</h4>
+                <ul class="footer-links-list">
+                    <li><a href="#">Privacy Guarantee</a></li>
+                    <li><a href="#">Terms of Service</a></li>
+                    <li><a href="#">Client-Side Architecture</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="container footer-bottom">
+            <div>&copy; 2026 PDF Toolkit. All rights reserved.</div>
+            <div class="status-badge-live">
+                <span class="status-dot"></span>
+                100% Client-Side • All Systems Operational
+            </div>
         </div>
     </footer>
 

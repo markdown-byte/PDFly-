@@ -3,79 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JPG to PDF Converter — Convert Images to PDF Free</title>
+    <title>JPG to PDF Converter — Free & Private Image to PDF Tool</title>
     <meta name="description" content="Convert JPG, PNG, and WebP images to a PDF document in seconds. 100% free and private browser-based tool.">
     <link rel="canonical" href="https://pdftoolkit.com/jpg-to-pdf">
     <link rel="stylesheet" href="css/style.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.17.1/pdf-lib.min.js" integrity="sha384-weMABwrltA6jWR8DDe9Jp5blk+tZQh7ugpCsF3JwSA53WZM9/14PjS5LAJNHNjAI" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <style>
-        .image-preview-list {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
-            gap: 1rem;
-            margin: 2rem 0;
-        }
-        .image-preview-item {
-            position: relative;
-            background-color: var(--bg-color);
-            border: 1px solid var(--border-color);
-            border-radius: var(--radius-md);
-            padding: 0.5rem;
-            cursor: grab;
-        }
-        .image-preview-item img {
-            width: 100%;
-            height: 100px;
-            object-fit: cover;
-            border-radius: calc(var(--radius-md) - 4px);
-            display: block;
-        }
-        .image-preview-item .remove-btn {
-            position: absolute;
-            top: -5px;
-            right: -5px;
-            background-color: var(--error);
-            color: white;
-            border: none;
-            border-radius: 50%;
-            width: 24px;
-            height: 24px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            box-shadow: var(--shadow-sm);
-        }
-        .settings-bar {
-            background-color: var(--bg-color);
-            padding: 1rem;
-            border-radius: var(--radius-md);
-            border: 1px solid var(--border-color);
-            margin-bottom: 1.5rem;
-            display: flex;
-            gap: 2rem;
-            align-items: center;
-        }
-        .setting-group {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-        .setting-group select {
-            padding: 0.5rem;
-            border-radius: var(--radius-md);
-            border: 1px solid var(--border-color);
-            background-color: var(--bg-card);
-            color: var(--text-main);
-        }
-    </style>
 </head>
 <body>
     <header>
         <div class="container nav-container">
             <a href="index.html" class="logo">
-                <svg class="logo-icon" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><path d="M12 18v-6l-3 3m3-3l3 3"/></svg>
-                PDF Toolkit
+                <div class="logo-badge">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                        <polyline points="14 2 14 8 20 8"/>
+                        <path d="M12 18v-6l-3 3m3-3l3 3"/>
+                    </svg>
+                </div>
+                <span class="logo-text">PDF Toolkit</span>
             </a>
             
             <nav class="nav-links">
@@ -87,95 +32,176 @@
             </nav>
             
             <div class="nav-controls">
-                <button id="theme-toggle" class="icon-btn" aria-label="Toggle dark mode">
+                <button id="theme-toggle" class="icon-btn" aria-label="Toggle dark mode" title="Toggle Theme">
                     <svg id="moon-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
-                    <svg id="sun-icon" style="display: none;" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle></svg>
+                    <svg id="sun-icon" style="display: none;" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
                 </button>
-                <button class="icon-btn hamburger" id="mobile-menu-btn" aria-label="Menu">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+                <button class="icon-btn hamburger" id="mobile-menu-btn" aria-label="Open Menu">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
                 </button>
             </div>
         </div>
     </header>
 
     <main class="tool-page container">
+        <div class="breadcrumb">
+            <a href="index.html">Home</a>
+            <span class="breadcrumb-separator">/</span>
+            <span>JPG to PDF</span>
+        </div>
+
         <div class="tool-header">
-            <h1>JPG to PDF</h1>
-            <p>Convert images to PDF format in seconds.</p>
+            <div class="tool-header-badge">Photo to PDF</div>
+            <h1>JPG to PDF Converter</h1>
+            <p>Convert images (JPG, PNG, WebP) into high-quality PDF documents effortlessly.</p>
         </div>
 
         <div class="workspace" id="workspace">
             <div id="upload-state">
                 <div class="uploader" id="image-uploader">
                     <input type="file" multiple accept="image/jpeg,image/png,image/webp">
-                    <div class="uploader-icon">
-                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2" ry="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/></svg>
+                    <div class="uploader-icon-box">
+                        <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2" ry="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/></svg>
                     </div>
-                    <div class="uploader-text">Drop your Images here</div>
-                    <div class="uploader-subtext">JPG, PNG, WebP supported</div>
+                    <div class="uploader-title">Drop images here to convert</div>
+                    <div class="uploader-subtext">or click anywhere to select photos from your device</div>
+                    <div class="uploader-btn-fake">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg>
+                        Select Images
+                    </div>
+                    <div class="uploader-badges">
+                        <span class="format-badge">JPG</span>
+                        <span class="format-badge">PNG</span>
+                        <span class="format-badge">WebP</span>
+                        <span class="format-badge">Multi-image</span>
+                    </div>
                 </div>
                 <div id="error-msg" class="error-message"></div>
-                <div class="privacy-notice">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
-                    Processed locally in your browser
+                <div class="privacy-badge-banner">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+                    100% Private · Rendered directly on your device
                 </div>
             </div>
 
             <div id="list-state" style="display: none;">
                 <div class="settings-bar">
                     <div class="setting-group">
-                        <label for="orientation">Orientation:</label>
+                        <label for="orientation">Page Orientation:</label>
                         <select id="orientation">
-                            <option value="auto">Auto (Match Image)</option>
+                            <option value="auto">Auto (Match Image Ratio)</option>
                             <option value="portrait">Portrait</option>
                             <option value="landscape">Landscape</option>
                         </select>
                     </div>
                 </div>
                 
-                <p style="text-align: center; color: var(--text-muted); margin-bottom: 1rem;">Drag images to reorder them.</p>
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem;">
+                    <h3 style="font-size: 1.15rem; font-weight: 700;">Selected Images</h3>
+                    <span style="font-size: 0.85rem; color: var(--text-muted);">💡 Drag thumbnails to reorder</span>
+                </div>
+
                 <div class="image-preview-list" id="image-list"></div>
                 
                 <div class="controls-bar">
-                    <button class="btn btn-secondary" id="add-more-btn">Add More Images</button>
-                    <button class="btn btn-primary" id="convert-btn">Convert to PDF</button>
+                    <button class="btn btn-secondary" id="add-more-btn">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg>
+                        Add More Images
+                    </button>
+                    <button class="btn btn-primary" id="convert-btn">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><path d="M12 18v-6l-3 3m3-3l3 3"/></svg>
+                        Convert to PDF Now
+                    </button>
                 </div>
                 <input type="file" id="hidden-add-input" multiple accept="image/jpeg,image/png,image/webp" style="display: none;">
             </div>
 
             <div id="processing-state" class="processing-state">
-                <div class="spinner"></div>
-                <h2>Converting your images...</h2>
+                <div class="spinner-wrapper">
+                    <div class="spinner"></div>
+                </div>
+                <h2>Converting your images to PDF...</h2>
+                <p>Embedding images into standard PDF document format.</p>
             </div>
 
             <div id="results-state" class="results-state">
-                <div class="success-icon">✓</div>
+                <div class="success-badge-icon">✓</div>
                 <h2>Conversion Complete!</h2>
+                <p>Your images have been converted into a single PDF document.</p>
                 <div class="action-buttons">
-                    <button class="btn btn-primary" id="download-btn">Download PDF</button>
-                    <button class="btn btn-secondary" id="start-over-btn">Start Over</button>
+                    <button class="btn btn-primary" id="download-btn">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                        Download PDF File
+                    </button>
+                    <button class="btn btn-secondary" id="start-over-btn">Convert More Images</button>
                 </div>
             </div>
         </div>
 
         <section class="content-section">
-            <h2>How to convert JPG to PDF</h2>
-            <div class="faq-item">
-                <p>1. Upload one or multiple JPG, PNG, or WebP images.</p>
-                <p>2. Drag and drop the thumbnails to reorder the pages.</p>
-                <p>3. Choose your preferred page orientation (Portrait, Landscape, or Auto).</p>
-                <p>4. Click "Convert to PDF" and download your document.</p>
+            <h2>
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+                How to Convert JPG to PDF
+            </h2>
+            <div class="guide-step-list">
+                <div class="guide-step-item">
+                    <div class="guide-step-num">1</div>
+                    <div><strong>Add your pictures</strong>: Upload any JPG, PNG, or WebP pictures you want to combine.</div>
+                </div>
+                <div class="guide-step-item">
+                    <div class="guide-step-num">2</div>
+                    <div><strong>Adjust layout</strong>: Drag images to change their display sequence and pick your page orientation.</div>
+                </div>
+                <div class="guide-step-item">
+                    <div class="guide-step-num">3</div>
+                    <div><strong>Save PDF</strong>: Click "Convert to PDF Now" and instantly download your presentation or document.</div>
+                </div>
             </div>
         </section>
     </main>
 
     <footer>
-        <div class="container footer-content">
-            <div class="logo">PDF Toolkit</div>
-            <div class="footer-links">
-                <a href="index.html">Home</a>
+        <div class="container footer-top">
+            <div class="footer-brand">
+                <a href="index.html" class="logo">
+                    <div class="logo-badge">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                            <polyline points="14 2 14 8 20 8"/>
+                            <path d="M12 18v-6l-3 3m3-3l3 3"/>
+                        </svg>
+                    </div>
+                    <span class="logo-text">PDF Toolkit</span>
+                </a>
+                <p>The modern, private, and ultra-fast PDF toolkit built directly into your web browser. Free forever.</p>
             </div>
-            <p style="color: var(--text-muted); font-size: 0.9rem;">&copy; 2026 PDF Toolkit.</p>
+
+            <div class="footer-links-group">
+                <h4>PDF Tools</h4>
+                <ul class="footer-links-list">
+                    <li><a href="merge-pdf.html">Merge PDF</a></li>
+                    <li><a href="split-pdf.html">Split PDF</a></li>
+                    <li><a href="compress-pdf.html">Compress PDF</a></li>
+                    <li><a href="jpg-to-pdf.html">JPG to PDF</a></li>
+                    <li><a href="pdf-to-jpg.html">PDF to JPG</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-links-group">
+                <h4>Security & Privacy</h4>
+                <ul class="footer-links-list">
+                    <li><a href="#">Privacy Guarantee</a></li>
+                    <li><a href="#">Terms of Service</a></li>
+                    <li><a href="#">Client-Side Architecture</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="container footer-bottom">
+            <div>&copy; 2026 PDF Toolkit. All rights reserved.</div>
+            <div class="status-badge-live">
+                <span class="status-dot"></span>
+                100% Client-Side • All Systems Operational
+            </div>
         </div>
     </footer>
 

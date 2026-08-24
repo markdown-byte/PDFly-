@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PDF to JPG Converter — Convert PDF Pages to Images</title>
-    <meta name="description" content="Extract images from your PDF or convert every page into a JPG picture. Fast, free, and private.">
+    <title>PDF to JPG Converter — Free & High-Resolution Page Renderer</title>
+    <meta name="description" content="Extract images from your PDF or convert every page into a crisp JPG picture. Fast, free, and private in your browser.">
     <link rel="canonical" href="https://pdftoolkit.com/pdf-to-jpg">
     <link rel="stylesheet" href="css/style.css">
     
@@ -15,35 +15,19 @@
         // Set worker path
         pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
     </script>
-    
-    <style>
-        .progress-bar-container {
-            width: 100%;
-            height: 8px;
-            background-color: var(--border-color);
-            border-radius: 4px;
-            overflow: hidden;
-            margin: 1.5rem 0;
-        }
-        .progress-bar {
-            height: 100%;
-            background-color: var(--primary);
-            width: 0%;
-            transition: width 0.3s ease;
-        }
-        .status-text {
-            color: var(--text-muted);
-            font-size: 0.9rem;
-            margin-bottom: 1rem;
-        }
-    </style>
 </head>
 <body>
     <header>
         <div class="container nav-container">
             <a href="index.html" class="logo">
-                <svg class="logo-icon" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><path d="M12 18v-6l-3 3m3-3l3 3"/></svg>
-                PDF Toolkit
+                <div class="logo-badge">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                        <polyline points="14 2 14 8 20 8"/>
+                        <path d="M12 18v-6l-3 3m3-3l3 3"/>
+                    </svg>
+                </div>
+                <span class="logo-text">PDF Toolkit</span>
             </a>
             
             <nav class="nav-links">
@@ -55,78 +39,146 @@
             </nav>
             
             <div class="nav-controls">
-                <button id="theme-toggle" class="icon-btn" aria-label="Toggle dark mode">
+                <button id="theme-toggle" class="icon-btn" aria-label="Toggle dark mode" title="Toggle Theme">
                     <svg id="moon-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
-                    <svg id="sun-icon" style="display: none;" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle></svg>
+                    <svg id="sun-icon" style="display: none;" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
                 </button>
-                <button class="icon-btn hamburger" id="mobile-menu-btn" aria-label="Menu">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+                <button class="icon-btn hamburger" id="mobile-menu-btn" aria-label="Open Menu">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
                 </button>
             </div>
         </div>
     </header>
 
     <main class="tool-page container">
+        <div class="breadcrumb">
+            <a href="index.html">Home</a>
+            <span class="breadcrumb-separator">/</span>
+            <span>PDF to JPG</span>
+        </div>
+
         <div class="tool-header">
-            <h1>PDF to JPG</h1>
-            <p>Convert every page of a PDF into high-quality JPG images.</p>
+            <div class="tool-header-badge">High-Resolution Render</div>
+            <h1>PDF to JPG Converter</h1>
+            <p>Convert every page of your PDF file into crisp, individual JPG images.</p>
         </div>
 
         <div class="workspace" id="workspace">
             <div id="upload-state">
                 <div class="uploader" id="pdf-uploader">
                     <input type="file" accept=".pdf,application/pdf">
-                    <div class="uploader-icon">
-                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+                    <div class="uploader-icon-box">
+                        <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 22h14a2 2 0 0 0 2-2V7.5L14.5 2H6a2 2 0 0 0-2 2v4"/><polyline points="14 2 14 8 20 8"/><path d="M8 14h8"/><path d="m12 18 4-4-4-4"/></svg>
                     </div>
-                    <div class="uploader-text">Drop your PDF here</div>
-                    <div class="uploader-subtext">or click to choose file</div>
+                    <div class="uploader-title">Drop your PDF here to extract JPGs</div>
+                    <div class="uploader-subtext">or click anywhere to select from your device</div>
+                    <div class="uploader-btn-fake">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg>
+                        Select PDF Document
+                    </div>
+                    <div class="uploader-badges">
+                        <span class="format-badge">PDF format</span>
+                        <span class="format-badge">High-res rendering</span>
+                        <span class="format-badge">ZIP archive download</span>
+                    </div>
                 </div>
                 <div id="error-msg" class="error-message"></div>
-                <div class="privacy-notice">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
-                    Your files stay on your device
+                <div class="privacy-badge-banner">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+                    100% Private · Canvas rendered on your hardware
                 </div>
             </div>
 
             <div id="processing-state" class="processing-state">
-                <div class="spinner"></div>
-                <h2>Converting to Images...</h2>
+                <div class="spinner-wrapper">
+                    <div class="spinner"></div>
+                </div>
+                <h2>Rendering High-Res JPG Images...</h2>
                 <div class="progress-bar-container">
                     <div class="progress-bar" id="progress-bar"></div>
                 </div>
-                <div class="status-text" id="status-text">Parsing PDF...</div>
+                <div class="status-text" id="status-text">Parsing PDF document...</div>
             </div>
 
             <div id="results-state" class="results-state">
-                <div class="success-icon">✓</div>
+                <div class="success-badge-icon">✓</div>
                 <h2>Conversion Complete!</h2>
-                <p id="result-desc"></p>
+                <p id="result-desc">All pages have been successfully rendered into images.</p>
                 <div class="action-buttons">
-                    <button class="btn btn-primary" id="download-btn">Download ZIP</button>
-                    <button class="btn btn-secondary" id="start-over-btn">Start Over</button>
+                    <button class="btn btn-primary" id="download-btn">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                        Download ZIP Archive
+                    </button>
+                    <button class="btn btn-secondary" id="start-over-btn">Convert Another PDF</button>
                 </div>
             </div>
         </div>
 
         <section class="content-section">
-            <h2>How to convert PDF to JPG</h2>
-            <div class="faq-item">
-                <p>1. Upload the PDF document.</p>
-                <p>2. The tool will automatically begin processing your file.</p>
-                <p>3. Each page is converted to a high-quality JPG image.</p>
-                <p>4. Download a ZIP file containing all your images.</p>
+            <h2>
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+                How to Convert PDF to JPG
+            </h2>
+            <div class="guide-step-list">
+                <div class="guide-step-item">
+                    <div class="guide-step-num">1</div>
+                    <div><strong>Upload PDF</strong>: Select the document you want to extract images from.</div>
+                </div>
+                <div class="guide-step-item">
+                    <div class="guide-step-num">2</div>
+                    <div><strong>Automatic rendering</strong>: Each page is rendered into an HD JPEG picture using client-side canvas technology.</div>
+                </div>
+                <div class="guide-step-item">
+                    <div class="guide-step-num">3</div>
+                    <div><strong>Download ZIP</strong>: Save all your images bundled in a clean ZIP file instantly.</div>
+                </div>
             </div>
         </section>
     </main>
 
     <footer>
-        <div class="container footer-content">
-            <div class="logo">PDF Toolkit</div>
-            <div class="footer-links">
-                <a href="index.html">Home</a>
+        <div class="container footer-top">
+            <div class="footer-brand">
+                <a href="index.html" class="logo">
+                    <div class="logo-badge">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                            <polyline points="14 2 14 8 20 8"/>
+                            <path d="M12 18v-6l-3 3m3-3l3 3"/>
+                        </svg>
+                    </div>
+                    <span class="logo-text">PDF Toolkit</span>
+                </a>
+                <p>The modern, private, and ultra-fast PDF toolkit built directly into your web browser. Free forever.</p>
             </div>
-            <p style="color: var(--text-muted); font-size: 0.9rem;">&copy; 2026 PDF Toolkit.</p>
+
+            <div class="footer-links-group">
+                <h4>PDF Tools</h4>
+                <ul class="footer-links-list">
+                    <li><a href="merge-pdf.html">Merge PDF</a></li>
+                    <li><a href="split-pdf.html">Split PDF</a></li>
+                    <li><a href="compress-pdf.html">Compress PDF</a></li>
+                    <li><a href="jpg-to-pdf.html">JPG to PDF</a></li>
+                    <li><a href="pdf-to-jpg.html">PDF to JPG</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-links-group">
+                <h4>Security & Privacy</h4>
+                <ul class="footer-links-list">
+                    <li><a href="#">Privacy Guarantee</a></li>
+                    <li><a href="#">Terms of Service</a></li>
+                    <li><a href="#">Client-Side Architecture</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="container footer-bottom">
+            <div>&copy; 2026 PDF Toolkit. All rights reserved.</div>
+            <div class="status-badge-live">
+                <span class="status-dot"></span>
+                100% Client-Side • All Systems Operational
+            </div>
         </div>
     </footer>
 

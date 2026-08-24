@@ -57,11 +57,12 @@ document.addEventListener('DOMContentLoaded', () => {
             
             item.innerHTML = `
                 <div class="file-info">
-                    <span style="cursor: grab; font-size: 1.2rem; color: var(--text-muted);">☰</span>
+                    <span class="file-drag-handle">⋮⋮</span>
+                    <div class="file-type-icon">PDF</div>
                     <span class="file-name"></span>
-                    <span class="file-size">(${sizeMB} MB)</span>
+                    <span class="file-size">${sizeMB} MB</span>
                 </div>
-                <button class="remove-btn" data-index="${index}" title="Remove file">✕</button>
+                <button class="remove-btn" data-index="${index}" title="Remove file" aria-label="Remove file">✕</button>
             `;
             item.querySelector('.file-name').textContent = file.name;
             

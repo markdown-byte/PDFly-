@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PDF Toolkit — Free Client-Side PDF Tools</title>
-    <meta name="description" content="Merge, split, compress, and convert your PDF files directly from your browser. Fast, simple, and 100% private. No uploads, no servers.">
+    <title>PDF Toolkit — Free, Fast & 100% Private Client-Side PDF Tools</title>
+    <meta name="description" content="Merge, split, compress, and convert your PDF files directly from your browser. Ultra-fast, 100% private. No server uploads, no limits.">
     <link rel="canonical" href="https://pdftoolkit.com/">
     <link rel="stylesheet" href="css/style.css">
     
     <!-- SEO & Social Meta Tags -->
-    <meta property="og:title" content="PDF Toolkit — Free Client-Side PDF Tools">
-    <meta property="og:description" content="Merge, split, compress, and convert your PDF files directly from your browser.">
+    <meta property="og:title" content="PDF Toolkit — Free & Private PDF Suite">
+    <meta property="og:description" content="Merge, split, compress, and convert your PDF files directly from your browser with complete privacy.">
     <meta property="og:type" content="website">
     <meta name="twitter:card" content="summary_large_image">
 </head>
@@ -18,8 +18,14 @@
     <header>
         <div class="container nav-container">
             <a href="index.html" class="logo">
-                <svg class="logo-icon" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><path d="M12 18v-6l-3 3m3-3l3 3"/></svg>
-                PDF Toolkit
+                <div class="logo-badge">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                        <polyline points="14 2 14 8 20 8"/>
+                        <path d="M12 18v-6l-3 3m3-3l3 3"/>
+                    </svg>
+                </div>
+                <span class="logo-text">PDF Toolkit</span>
             </a>
             
             <nav class="nav-links">
@@ -31,102 +37,296 @@
             </nav>
             
             <div class="nav-controls">
-                <button id="theme-toggle" class="icon-btn" aria-label="Toggle dark mode">
+                <button id="theme-toggle" class="icon-btn" aria-label="Toggle dark mode" title="Toggle Theme">
                     <svg id="moon-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
                     <svg id="sun-icon" style="display: none;" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
                 </button>
-                <button class="icon-btn hamburger" id="mobile-menu-btn" aria-label="Menu">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+                <button class="icon-btn hamburger" id="mobile-menu-btn" aria-label="Open Menu">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
                 </button>
             </div>
         </div>
     </header>
 
     <main>
+        <!-- Hero Section -->
         <section class="hero container">
-            <span class="badge">100% Free & No Registration</span>
-            <h1>PDF Toolkit</h1>
-            <p>Free PDF tools. Fast, simple, and private. Merge, split, compress, convert and manage your PDF files directly from your browser.</p>
+            <div class="hero-pill-badge">
+                <span class="sparkle">✨</span> 100% Free · Client-Side Processing · Zero Server Uploads
+            </div>
+            <h1>Every PDF Tool You Need,<br><span class="gradient-text">Fast & 100% Private</span></h1>
+            <p class="hero-subtitle">Merge, split, compress, and convert your documents directly in your browser. No files ever leave your device, ensuring total security and lightning speed.</p>
             
-            <div class="privacy-notice">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
-                Your files stay on your device
+            <div class="trust-metrics-bar">
+                <div class="trust-metric-item">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                    <span>100% Client-Side Private</span>
+                </div>
+                <div class="trust-metric-item">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+                    <span>Instant 0s Server Lag</span>
+                </div>
+                <div class="trust-metric-item">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                    <span>Zero Watermarks</span>
+                </div>
+                <div class="trust-metric-item">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="4.93" y1="4.93" x2="19.07" y2="19.07"/></svg>
+                    <span>No Account Required</span>
+                </div>
             </div>
         </section>
 
+        <!-- Tools Grid Section -->
         <section class="tools-section container">
+            <div class="section-header">
+                <div class="section-tag">Powerful Suite</div>
+                <h2 class="section-title">Select a PDF Tool</h2>
+                <p class="section-desc">Choose the tool you need below to process your PDF files immediately without limits.</p>
+            </div>
+
             <div class="tools-grid">
-                <a href="merge-pdf.html" class="tool-card">
-                    <div class="tool-icon">
-                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M8 6h10a2 2 0 0 1 2 2v10"/><path d="M14 22v-6a2 2 0 0 0-2-2H4"/><path d="m8 10-4 4 4 4"/><path d="m16 2 4 4-4 4"/></svg>
+                <!-- Merge PDF -->
+                <a href="merge-pdf.html" class="tool-card card-merge">
+                    <div class="tool-card-top">
+                        <div class="tool-icon-wrapper">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 6h10a2 2 0 0 1 2 2v10"/><path d="M14 22v-6a2 2 0 0 0-2-2H4"/><path d="m8 10-4 4 4 4"/><path d="m16 2 4 4-4 4"/></svg>
+                        </div>
+                        <span class="tool-chip">Multi-file</span>
                     </div>
                     <h3>Merge PDF</h3>
-                    <p>Combine multiple PDFs into one unified document in seconds.</p>
+                    <p>Combine multiple PDF documents into a single organized file in seconds with drag-and-drop ordering.</p>
+                    <div class="tool-card-action">
+                        Merge Now
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                    </div>
                 </a>
                 
-                <a href="split-pdf.html" class="tool-card">
-                    <div class="tool-icon">
-                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 22h14a2 2 0 0 0 2-2V7.5L14.5 2H6a2 2 0 0 0-2 2v4"/><polyline points="14 2 14 8 20 8"/><path d="M3 15h6"/><path d="M3 18h6"/></svg>
+                <!-- Split PDF -->
+                <a href="split-pdf.html" class="tool-card card-split">
+                    <div class="tool-card-top">
+                        <div class="tool-icon-wrapper">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 22h14a2 2 0 0 0 2-2V7.5L14.5 2H6a2 2 0 0 0-2 2v4"/><polyline points="14 2 14 8 20 8"/><path d="M3 15h6"/><path d="M3 18h6"/></svg>
+                        </div>
+                        <span class="tool-chip">Page Extractor</span>
                     </div>
                     <h3>Split PDF</h3>
-                    <p>Extract pages or separate a PDF into multiple files easily.</p>
+                    <p>Extract specific pages or separate custom page ranges from large PDF files effortlessly.</p>
+                    <div class="tool-card-action">
+                        Split Now
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                    </div>
                 </a>
                 
-                <a href="compress-pdf.html" class="tool-card">
-                    <div class="tool-icon">
-                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 22h14a2 2 0 0 0 2-2V7.5L14.5 2H6a2 2 0 0 0-2 2v4"/><polyline points="14 2 14 8 20 8"/><path d="m9 15 3 3 3-3"/><path d="M12 18v-6"/></svg>
+                <!-- Compress PDF -->
+                <a href="compress-pdf.html" class="tool-card card-compress">
+                    <div class="tool-card-top">
+                        <div class="tool-icon-wrapper">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 22h14a2 2 0 0 0 2-2V7.5L14.5 2H6a2 2 0 0 0-2 2v4"/><polyline points="14 2 14 8 20 8"/><path d="m9 15 3 3 3-3"/><path d="M12 18v-6"/></svg>
+                        </div>
+                        <span class="tool-chip">Optimizer</span>
                     </div>
                     <h3>Compress PDF</h3>
-                    <p>Reduce file size for easier sharing and faster uploads.</p>
+                    <p>Optimize document structure and reduce file size for quick email sharing and faster uploads.</p>
+                    <div class="tool-card-action">
+                        Compress Now
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                    </div>
                 </a>
                 
-                <a href="jpg-to-pdf.html" class="tool-card">
-                    <div class="tool-icon">
-                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2" ry="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/></svg>
+                <!-- JPG to PDF -->
+                <a href="jpg-to-pdf.html" class="tool-card card-jpg-pdf">
+                    <div class="tool-card-top">
+                        <div class="tool-icon-wrapper">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2" ry="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/></svg>
+                        </div>
+                        <span class="tool-chip">JPG · PNG · WebP</span>
                     </div>
                     <h3>JPG to PDF</h3>
-                    <p>Convert JPG, PNG, or WebP images into a single PDF document.</p>
+                    <p>Convert your photos and gallery images into a high-resolution, unified PDF presentation.</p>
+                    <div class="tool-card-action">
+                        Convert Images
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                    </div>
                 </a>
                 
-                <a href="pdf-to-jpg.html" class="tool-card">
-                    <div class="tool-icon">
-                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 22h14a2 2 0 0 0 2-2V7.5L14.5 2H6a2 2 0 0 0-2 2v4"/><polyline points="14 2 14 8 20 8"/><path d="M8 14h8"/><path d="m12 18 4-4-4-4"/></svg>
+                <!-- PDF to JPG -->
+                <a href="pdf-to-jpg.html" class="tool-card card-pdf-jpg">
+                    <div class="tool-card-top">
+                        <div class="tool-icon-wrapper">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 22h14a2 2 0 0 0 2-2V7.5L14.5 2H6a2 2 0 0 0-2 2v4"/><polyline points="14 2 14 8 20 8"/><path d="M8 14h8"/><path d="m12 18 4-4-4-4"/></svg>
+                        </div>
+                        <span class="tool-chip">High-Res Render</span>
                     </div>
                     <h3>PDF to JPG</h3>
-                    <p>Extract images or convert every PDF page into a JPG picture.</p>
+                    <p>Render each PDF page into pristine JPG images and download them individually or in a ZIP bundle.</p>
+                    <div class="tool-card-action">
+                        Convert to JPG
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                    </div>
                 </a>
             </div>
         </section>
 
-        <section class="content-section container">
-            <h2>PDF Guides & Tips</h2>
-            <div class="faq-item">
-                <h3>How to merge PDF files?</h3>
-                <p>Simply select our Merge tool, drag and drop your PDFs into the browser, arrange them in your desired order, and click merge. All processing happens on your device.</p>
+        <!-- Why Choose Us / Features -->
+        <section class="features-section">
+            <div class="container">
+                <div class="section-header">
+                    <div class="section-tag">Unmatched Experience</div>
+                    <h2 class="section-title">Built with Privacy and Speed First</h2>
+                    <p class="section-desc">Unlike traditional PDF tools that send your sensitive data across remote servers, we do everything locally.</p>
+                </div>
+
+                <div class="features-grid">
+                    <div class="feature-box">
+                        <div class="feature-icon-circle">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+                        </div>
+                        <h4>100% Private</h4>
+                        <p>Your confidential documents never leave your browser. Processing occurs directly on your CPU.</p>
+                    </div>
+                    <div class="feature-box">
+                        <div class="feature-icon-circle">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+                        </div>
+                        <h4>Ultra Fast</h4>
+                        <p>No waiting in upload queues or download delays. Files are processed in real-time instantly.</p>
+                    </div>
+                    <div class="feature-box">
+                        <div class="feature-icon-circle">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>
+                        </div>
+                        <h4>Unlimited & Free</h4>
+                        <p>No subscriptions, no hidden limits, and no watermarks stamped onto your exported files.</p>
+                    </div>
+                    <div class="feature-box">
+                        <div class="feature-icon-circle">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+                        </div>
+                        <h4>Cross-Platform</h4>
+                        <p>Works smoothly across Mac, Windows, Linux, iOS, and Android web browsers with zero installation.</p>
+                    </div>
+                </div>
             </div>
-            <div class="faq-item">
-                <h3>Are my files secure?</h3>
-                <p>Yes. Our tools operate entirely in your web browser. Your files are never uploaded to a server, ensuring 100% privacy and fast processing times.</p>
+        </section>
+
+        <!-- How It Works Section -->
+        <section class="how-it-works-section container">
+            <div class="section-header">
+                <div class="section-tag">Simple & Intuitive</div>
+                <h2 class="section-title">How It Works</h2>
+                <p class="section-desc">Get your documents converted or organized in 3 effortless steps.</p>
             </div>
-            <div class="faq-item">
-                <h3>Do I need an account to use these tools?</h3>
-                <p>No, PDF Toolkit is entirely free to use with no registration required and no watermarks added to your documents.</p>
+
+            <div class="steps-grid">
+                <div class="step-card">
+                    <div class="step-number">01</div>
+                    <div class="step-icon-box">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                    </div>
+                    <h4>1. Choose Your Tool</h4>
+                    <p>Select whether you want to merge, split, compress, or convert between images and PDF.</p>
+                </div>
+
+                <div class="step-card">
+                    <div class="step-number">02</div>
+                    <div class="step-icon-box">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+                    </div>
+                    <h4>2. Drop Your Files</h4>
+                    <p>Drag and drop your documents into the browser. Adjust page ranges or rearrange items if desired.</p>
+                </div>
+
+                <div class="step-card">
+                    <div class="step-number">03</div>
+                    <div class="step-icon-box">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                    </div>
+                    <h4>3. Download Instantly</h4>
+                    <p>Click process and download your polished file instantly with zero wait times.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section class="faq-section container">
+            <div class="section-header">
+                <div class="section-tag">Got Questions?</div>
+                <h2 class="section-title">Frequently Asked Questions</h2>
+                <p class="section-desc">Clear answers to help you get the most out of our tools.</p>
+            </div>
+
+            <div class="faq-container">
+                <div class="faq-card">
+                    <h3>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                        Are my files and sensitive documents safe?
+                    </h3>
+                    <p>Yes, 100%. All processing occurs directly in your web browser using client-side WebAssembly and JavaScript. No document data is ever uploaded or stored on any server.</p>
+                </div>
+
+                <div class="faq-card">
+                    <h3>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                        Is there a file size limit or cost?
+                    </h3>
+                    <p>PDF Toolkit is completely free without hidden fees or daily limits. You can process large files up to 100MB right on your device.</p>
+                </div>
+
+                <div class="faq-card">
+                    <h3>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                        Will there be watermarks on my downloaded files?
+                    </h3>
+                    <p>No! We never add watermarks, banners, or modify the visual integrity of your documents.</p>
+                </div>
             </div>
         </section>
     </main>
 
     <footer>
-        <div class="container footer-content">
-            <div class="logo">
-                <svg class="logo-icon" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><path d="M12 18v-6l-3 3m3-3l3 3"/></svg>
-                PDF Toolkit
+        <div class="container footer-top">
+            <div class="footer-brand">
+                <a href="index.html" class="logo">
+                    <div class="logo-badge">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                            <polyline points="14 2 14 8 20 8"/>
+                            <path d="M12 18v-6l-3 3m3-3l3 3"/>
+                        </svg>
+                    </div>
+                    <span class="logo-text">PDF Toolkit</span>
+                </a>
+                <p>The modern, private, and ultra-fast PDF toolkit built directly into your web browser. Free forever.</p>
             </div>
-            <div class="footer-links">
-                <a href="index.html">Home</a>
-                <a href="#">Privacy Policy</a>
-                <a href="#">Terms of Service</a>
+
+            <div class="footer-links-group">
+                <h4>PDF Tools</h4>
+                <ul class="footer-links-list">
+                    <li><a href="merge-pdf.html">Merge PDF</a></li>
+                    <li><a href="split-pdf.html">Split PDF</a></li>
+                    <li><a href="compress-pdf.html">Compress PDF</a></li>
+                    <li><a href="jpg-to-pdf.html">JPG to PDF</a></li>
+                    <li><a href="pdf-to-jpg.html">PDF to JPG</a></li>
+                </ul>
             </div>
-            <p style="color: var(--text-muted); font-size: 0.9rem;">&copy; 2026 PDF Toolkit. All rights reserved.</p>
+
+            <div class="footer-links-group">
+                <h4>Security & Privacy</h4>
+                <ul class="footer-links-list">
+                    <li><a href="#">Privacy Guarantee</a></li>
+                    <li><a href="#">Terms of Service</a></li>
+                    <li><a href="#">Client-Side Architecture</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="container footer-bottom">
+            <div>&copy; 2026 PDF Toolkit. All rights reserved.</div>
+            <div class="status-badge-live">
+                <span class="status-dot"></span>
+                100% Client-Side • All Systems Operational
+            </div>
         </div>
     </footer>
 
