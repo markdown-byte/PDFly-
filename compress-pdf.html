@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Compress PDF Online — Free PDF Compressor</title>
+    <meta name="description" content="Reduce your PDF file size easily in your browser without uploading your files. Private, fast, and free.">
+    <link rel="canonical" href="https://pdftoolkit.com/compress-pdf">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.17.1/pdf-lib.min.js" integrity="sha384-weMABwrltA6jWR8DDe9Jp5blk+tZQh7ugpCsF3JwSA53WZM9/14PjS5LAJNHNjAI" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <style>
+        .compress-controls {
+            margin-top: 2rem;
+            text-align: left;
+        }
+        .file-meta {
+            background-color: var(--bg-color);
+            padding: 1rem;
+            border-radius: var(--radius-md);
+            margin-bottom: 1.5rem;
+            border: 1px solid var(--border-color);
+            display: flex;
+            justify-content: space-between;
+        }
+        .file-meta strong {
+            color: var(--primary);
+        }
+        .disclaimer {
+            background-color: rgba(245, 158, 11, 0.1);
+            color: #d97706;
+            padding: 1rem;
+            border-radius: var(--radius-md);
+            margin-bottom: 1.5rem;
+            font-size: 0.9rem;
+            border: 1px solid rgba(245, 158, 11, 0.2);
+        }
+        [data-theme="dark"] .disclaimer {
+            color: #fbbf24;
+        }
+        .stats {
+            display: flex;
+            justify-content: space-around;
+            background-color: var(--bg-color);
+            padding: 1.5rem;
+            border-radius: var(--radius-md);
+            margin-bottom: 1.5rem;
+            border: 1px solid var(--border-color);
+        }
+        .stat-item {
+            text-align: center;
+        }
+        .stat-value {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container nav-container">
+            <a href="index.html" class="logo">
+                <svg class="logo-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+                PDF Toolkit
+            </a>
+            
+            <nav class="nav-links">
+                <a href="merge-pdf.html">Merge PDF</a>
+                <a href="split-pdf.html">Split PDF</a>
+                <a href="compress-pdf.html" class="active">Compress PDF</a>
+                <a href="jpg-to-pdf.html">JPG to PDF</a>
+                <a href="pdf-to-jpg.html">PDF to JPG</a>
+            </nav>
+            
+            <div class="nav-controls">
+                <button id="theme-toggle" class="icon-btn" aria-label="Toggle dark mode">
+                    <svg id="moon-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+                    <svg id="sun-icon" style="display: none;" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle></svg>
+                </button>
+                <button class="icon-btn hamburger" id="mobile-menu-btn" aria-label="Menu">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main class="tool-page container">
+        <div class="tool-header">
+            <h1>Compress PDF</h1>
+            <p>Reduce file size by removing unused objects and streams.</p>
+        </div>
+
+        <div class="workspace" id="workspace">
+            <div id="upload-state">
+                <div class="uploader" id="pdf-uploader">
+                    <input type="file" accept=".pdf,application/pdf">
+                    <div class="uploader-icon">
+                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+                    </div>
+                    <div class="uploader-text">Drop your PDF here</div>
+                    <div class="uploader-subtext">or click to choose file</div>
+                </div>
+                <div id="error-msg" class="error-message"></div>
+                <div class="privacy-notice">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+                    Your files stay on your device
+                </div>
+            </div>
+
+            <div id="options-state" style="display: none;">
+                <div class="disclaimer">
+                    <strong>Note:</strong> Browser-only compression has technical limitations. We rebuild the PDF and remove unused objects. This works best for PDFs that have been edited heavily. Deep image compression requires a server and is not supported here to protect your privacy.
+                </div>
+                <div class="file-meta">
+                    <div>File: <strong id="file-name-display"></strong></div>
+                    <div>Original Size: <strong id="original-size-display"></strong></div>
+                </div>
+                
+                <div class="split-controls">
+                    <div class="controls-bar">
+                        <button class="btn btn-secondary" id="cancel-btn">Cancel</button>
+                        <button class="btn btn-primary" id="compress-btn">Compress PDF</button>
+                    </div>
+                </div>
+            </div>
+
+            <div id="processing-state" class="processing-state">
+                <div class="spinner"></div>
+                <h2>Compressing your PDF...</h2>
+            </div>
+
+            <div id="results-state" class="results-state">
+                <div class="success-icon">✓</div>
+                <h2>Compression Complete!</h2>
+                
+                <div class="stats">
+                    <div class="stat-item">
+                        <div class="stat-value" id="old-size-stat"></div>
+                        <div>Original</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value" id="new-size-stat"></div>
+                        <div>Compressed</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value" id="saved-stat" style="color: var(--success);"></div>
+                        <div>Saved</div>
+                    </div>
+                </div>
+
+                <div class="action-buttons">
+                    <button class="btn btn-primary" id="download-btn">Download PDF</button>
+                    <button class="btn btn-secondary" id="start-over-btn">Start Over</button>
+                </div>
+            </div>
+        </div>
+
+        <section class="content-section">
+            <h2>How to reduce PDF size</h2>
+            <div class="faq-item">
+                <p>1. Upload the PDF file you wish to compress.</p>
+                <p>2. Read the disclaimer about client-side compression limits.</p>
+                <p>3. Click "Compress PDF". The tool will rebuild the file structure, discarding unused objects to reduce size.</p>
+                <p>4. Download the newly compressed file.</p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container footer-content">
+            <div class="logo">PDF Toolkit</div>
+            <div class="footer-links">
+                <a href="index.html">Home</a>
+            </div>
+            <p style="color: var(--text-muted); font-size: 0.9rem;">&copy; 2026 PDF Toolkit.</p>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/upload.js"></script>
+    <script src="js/compress.js"></script>
+</body>
+</html>

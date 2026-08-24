@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDF to JPG Converter — Convert PDF Pages to Images</title>
+    <meta name="description" content="Extract images from your PDF or convert every page into a JPG picture. Fast, free, and private.">
+    <link rel="canonical" href="https://pdftoolkit.com/pdf-to-jpg">
+    <link rel="stylesheet" href="css/style.css">
+    
+    <!-- pdf.js and jszip -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js" integrity="sha384-/1qUCSGwTur9vjf/z9lmu/eCUYbpOTgSjmpbMQZ1/CtX2v/WcAIKqRv+U1DUCG6e" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js" integrity="sha384-+mbV2IY1Zk/X1p/nWllGySJSUN8uMs+gUAN10Or95UBH0fpj6GfKgPmgC5EXieXG" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+        // Set worker path
+        pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+    </script>
+    
+    <style>
+        .progress-bar-container {
+            width: 100%;
+            height: 8px;
+            background-color: var(--border-color);
+            border-radius: 4px;
+            overflow: hidden;
+            margin: 1.5rem 0;
+        }
+        .progress-bar {
+            height: 100%;
+            background-color: var(--primary);
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+        .status-text {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container nav-container">
+            <a href="index.html" class="logo">
+                <svg class="logo-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+                PDF Toolkit
+            </a>
+            
+            <nav class="nav-links">
+                <a href="merge-pdf.html">Merge PDF</a>
+                <a href="split-pdf.html">Split PDF</a>
+                <a href="compress-pdf.html">Compress PDF</a>
+                <a href="jpg-to-pdf.html">JPG to PDF</a>
+                <a href="pdf-to-jpg.html" class="active">PDF to JPG</a>
+            </nav>
+            
+            <div class="nav-controls">
+                <button id="theme-toggle" class="icon-btn" aria-label="Toggle dark mode">
+                    <svg id="moon-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+                    <svg id="sun-icon" style="display: none;" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle></svg>
+                </button>
+                <button class="icon-btn hamburger" id="mobile-menu-btn" aria-label="Menu">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main class="tool-page container">
+        <div class="tool-header">
+            <h1>PDF to JPG</h1>
+            <p>Convert every page of a PDF into high-quality JPG images.</p>
+        </div>
+
+        <div class="workspace" id="workspace">
+            <div id="upload-state">
+                <div class="uploader" id="pdf-uploader">
+                    <input type="file" accept=".pdf,application/pdf">
+                    <div class="uploader-icon">
+                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+                    </div>
+                    <div class="uploader-text">Drop your PDF here</div>
+                    <div class="uploader-subtext">or click to choose file</div>
+                </div>
+                <div id="error-msg" class="error-message"></div>
+                <div class="privacy-notice">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+                    Your files stay on your device
+                </div>
+            </div>
+
+            <div id="processing-state" class="processing-state">
+                <div class="spinner"></div>
+                <h2>Converting to Images...</h2>
+                <div class="progress-bar-container">
+                    <div class="progress-bar" id="progress-bar"></div>
+                </div>
+                <div class="status-text" id="status-text">Parsing PDF...</div>
+            </div>
+
+            <div id="results-state" class="results-state">
+                <div class="success-icon">✓</div>
+                <h2>Conversion Complete!</h2>
+                <p id="result-desc"></p>
+                <div class="action-buttons">
+                    <button class="btn btn-primary" id="download-btn">Download ZIP</button>
+                    <button class="btn btn-secondary" id="start-over-btn">Start Over</button>
+                </div>
+            </div>
+        </div>
+
+        <section class="content-section">
+            <h2>How to convert PDF to JPG</h2>
+            <div class="faq-item">
+                <p>1. Upload the PDF document.</p>
+                <p>2. The tool will automatically begin processing your file.</p>
+                <p>3. Each page is converted to a high-quality JPG image.</p>
+                <p>4. Download a ZIP file containing all your images.</p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container footer-content">
+            <div class="logo">PDF Toolkit</div>
+            <div class="footer-links">
+                <a href="index.html">Home</a>
+            </div>
+            <p style="color: var(--text-muted); font-size: 0.9rem;">&copy; 2026 PDF Toolkit.</p>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/upload.js"></script>
+    <script src="js/pdf-to-jpg.js"></script>
+</body>
+</html>
