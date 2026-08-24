@@ -55,16 +55,15 @@ class Uploader {
         let error = null;
 
         Array.from(files).forEach(file => {
-            // Check file type
-            const ext = '.' + file.name.split('.').pop().toLowerCase();
-            const acceptedTypes = this.options.accept.split(',').map(s => s.trim().toLowerCase());
-            
-            let isAccepted = false;
-            if (this.options.accept.includes('image/*') && file.type.startsWith('image/')) {
-                isAccepted = true;
+            // Robust check for PDF and images across mobile/desktop OS
+            const isPdf = ext === '.pdf' || file.type === 'application/pdf' || file.type.includes('pdf');
+            const isImage = file.type.startsWith('image/') || ['.jpg', '.jpeg', '.png', '.webp'].includes(ext);
+
+            if (this.options.accept.includes('pdf')) {
+                if (isPdf) isAccepted = true;
+            } else if (this.options.accept.includes('image') || this.options.accept.includes('jpeg') || this.options.accept.includes('png')) {
+                if (isImage) isAccepted = true;
             } else if (acceptedTypes.includes(ext) || acceptedTypes.includes(file.type.toLowerCase())) {
-                isAccepted = true;
-            } else if (this.options.accept === 'application/pdf' && file.type === 'application/pdf') {
                 isAccepted = true;
             }
 

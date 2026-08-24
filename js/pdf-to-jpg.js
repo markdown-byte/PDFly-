@@ -109,7 +109,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     downloadBtn.addEventListener('click', () => {
         let url, filename;
-        const originalName = sourcePdfFile.name.replace('.pdf', '');
+        const originalName = (sourcePdfFile && sourcePdfFile.name) ? sourcePdfFile.name.replace('.pdf', '') : 'document';
 
         if (totalPages > 1 && zipBlob) {
             url = URL.createObjectURL(zipBlob);
@@ -122,12 +122,15 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         const a = document.createElement('a');
+        a.style.display = 'none';
         a.href = url;
         a.download = filename;
         document.body.appendChild(a);
         a.click();
-        document.body.removeChild(a);
-        URL.revokeObjectURL(url);
+        setTimeout(() => {
+            if (document.body.contains(a)) document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+        }, 15000);
     });
 
     startOverBtn.addEventListener('click', () => {

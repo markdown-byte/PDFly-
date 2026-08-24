@@ -224,12 +224,15 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!convertedPdfBlob) return;
         const url = URL.createObjectURL(convertedPdfBlob);
         const a = document.createElement('a');
+        a.style.display = 'none';
         a.href = url;
         a.download = 'converted_images.pdf';
         document.body.appendChild(a);
         a.click();
-        document.body.removeChild(a);
-        URL.revokeObjectURL(url);
+        setTimeout(() => {
+            if (document.body.contains(a)) document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+        }, 15000);
     });
 
     startOverBtn.addEventListener('click', () => {

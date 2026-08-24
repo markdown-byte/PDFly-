@@ -39,7 +39,8 @@ document.addEventListener('DOMContentLoaded', () => {
     hiddenAddInput.addEventListener('change', (e) => {
         const files = Array.from(e.target.files);
         files.forEach(f => {
-            if (f.type === 'application/pdf') filesToMerge.push(f);
+            const isPdf = f.name.toLowerCase().endsWith('.pdf') || f.type.includes('pdf');
+            if (isPdf) filesToMerge.push(f);
         });
         updateFileList();
         hiddenAddInput.value = '';
@@ -158,12 +159,15 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!mergedPdfBlob) return;
         const url = URL.createObjectURL(mergedPdfBlob);
         const a = document.createElement('a');
+        a.style.display = 'none';
         a.href = url;
         a.download = 'merged_document.pdf';
         document.body.appendChild(a);
         a.click();
-        document.body.removeChild(a);
-        URL.revokeObjectURL(url); // Clean up
+        setTimeout(() => {
+            if (document.body.contains(a)) document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+        }, 15000);
     });
 
     startOverBtn.addEventListener('click', () => {
