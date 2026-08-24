@@ -57,6 +57,11 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // Register Monetag Service Worker
+    if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('/sw.js').catch(() => {});
+    }
+
     // Share API Integration
     window.shareResult = async (title, text, url) => {
         if (navigator.share) {
