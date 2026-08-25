@@ -1428,3 +1428,19 @@ footer {
     text-align: center;
   }
 }
+
+/* Ad Banner Slot */
+.ad-banner-slot {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 2.5rem auto;
+  max-width: 100%;
+  overflow: hidden;
+  text-align: center;
+  min-height: 90px;
+}
+
+.ad-banner-slot > div {
+  max-width: 100%;
+}
