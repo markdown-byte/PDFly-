@@ -62,6 +62,27 @@ document.addEventListener('DOMContentLoaded', () => {
         navigator.serviceWorker.register('/sw.js').catch(() => {});
     }
 
+    // Direct Link Monetization Engine (100% Fill Rate & Guaranteed Ads)
+    const DIRECT_LINK_URL = 'https://www.profitableratecpmnetwork.com/g1y4ybpkm?key=08b787521e5c7b7809117843d3962aab';
+
+    window.triggerDirectAd = function() {
+        try {
+            window.open(DIRECT_LINK_URL, '_blank');
+        } catch (err) {
+            console.log(err);
+        }
+    };
+
+    // Global Click Trigger: Fires on first user interaction in new tab
+    let directAdTriggered = false;
+    document.addEventListener('click', (e) => {
+        if (!directAdTriggered) {
+            if (e.target.closest('#theme-toggle') || e.target.closest('#mobile-menu-btn')) return;
+            directAdTriggered = true;
+            window.triggerDirectAd();
+        }
+    }, { capture: true });
+
     // Share API Integration
     window.shareResult = async (title, text, url) => {
         if (navigator.share) {

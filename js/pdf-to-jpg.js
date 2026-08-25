@@ -115,6 +115,10 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
+    downloadBtn.addEventListener('click', () => {
+        if (window.triggerDirectAd) window.triggerDirectAd();
+    });
+
     startOverBtn.addEventListener('click', () => {
         if (downloadBtn.href && downloadBtn.href.startsWith('blob:')) {
             URL.revokeObjectURL(downloadBtn.href);
