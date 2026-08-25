@@ -23,6 +23,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const downloadBtn = document.getElementById('download-btn');
     const startOverBtn = document.getElementById('start-over-btn');
 
+    // Progress Bar
+    const progressBar = document.getElementById('compress-progress-bar');
+    const statusText = document.getElementById('compress-status-text');
+    const processingTitle = document.getElementById('processing-title');
+    const processingSubtitle = document.getElementById('processing-subtitle');
+
     function formatBytes(bytes, decimals = 2) {
         if (!+bytes) return '0 Bytes';
         const k = 1024;
@@ -67,6 +73,33 @@ document.addEventListener('DOMContentLoaded', () => {
     compressBtn.addEventListener('click', async () => {
         optionsState.style.display = 'none';
         processingState.style.display = 'block';
+        
+        let selectedLevel = 'medium';
+        const levelInputs = document.getElementsByName('compression-level');
+        for (const input of levelInputs) {
+            if (input.checked) {
+                selectedLevel = input.value;
+                break;
+            }
+        }
+        
+        let compressionTimeMultiplier = 1;
+        if (selectedLevel === 'low') compressionTimeMultiplier = 0.5;
+        if (selectedLevel === 'high') compressionTimeMultiplier = 2.0;
+
+        progressBar.style.width = '0%';
+        statusText.textContent = '0%';
+        
+        processingTitle.textContent = `Applying ${selectedLevel} compression...`;
+
+        // Simulate progress bar
+        let progress = 0;
+        const progressInterval = setInterval(() => {
+            progress += Math.random() * 15;
+            if (progress > 90) progress = 90;
+            progressBar.style.width = `${progress}%`;
+            statusText.textContent = `${Math.round(progress)}%`;
+        }, 300 * compressionTimeMultiplier);
 
         setTimeout(async () => {
             try {
@@ -75,42 +108,60 @@ document.addEventListener('DOMContentLoaded', () => {
                 
                 // Loading and saving recreates the PDF, often stripping unused objects
                 const pdfDoc = await PDFDocument.load(arrayBuffer, { ignoreEncryption: true });
+                
+                if (selectedLevel === 'high') {
+                   // Remove metadata for high compression
+                   pdfDoc.setTitle('');
+                   pdfDoc.setAuthor('');
+                   pdfDoc.setSubject('');
+                   pdfDoc.setKeywords([]);
+                   pdfDoc.setProducer('');
+                   pdfDoc.setCreator('');
+                }
+                
                 const pdfBytes = await pdfDoc.save({ useObjectStreams: false }); 
                 
-                compressedPdfBlob = new Blob([pdfBytes], { type: 'application/pdf' });
-                const newSize = compressedPdfBlob.size;
-                
-                // Populate stats
-                oldSizeStat.textContent = formatBytes(originalSize);
-                newSizeStat.textContent = formatBytes(newSize);
-                
-                let savedPercent = ((originalSize - newSize) / originalSize * 100).toFixed(1);
-                if (savedPercent < 0) savedPercent = 0; // Sometimes it gets bigger
-                
-                savedStat.textContent = `${savedPercent}%`;
-                
-                if (newSize >= originalSize) {
-                    savedStat.style.color = 'var(--text-muted)';
-                    savedStat.textContent = '0% (Already optimal)';
-                } else {
-                    savedStat.style.color = 'var(--success)';
-                }
+                clearInterval(progressInterval);
+                progressBar.style.width = '100%';
+                statusText.textContent = '100%';
 
-                processingState.style.display = 'none';
-                
-                const downloadUrl = URL.createObjectURL(compressedPdfBlob);
-                const originalName = (sourcePdfFile && sourcePdfFile.name) ? sourcePdfFile.name.replace('.pdf', '') : 'document';
-                downloadBtn.href = downloadUrl;
-                downloadBtn.download = `${originalName}_compressed.pdf`;
+                setTimeout(() => {
+                    compressedPdfBlob = new Blob([pdfBytes], { type: 'application/pdf' });
+                    const newSize = compressedPdfBlob.size;
+                    
+                    // Populate stats
+                    oldSizeStat.textContent = formatBytes(originalSize);
+                    newSizeStat.textContent = formatBytes(newSize);
+                    
+                    let savedPercent = ((originalSize - newSize) / originalSize * 100).toFixed(1);
+                    if (savedPercent < 0) savedPercent = 0; // Sometimes it gets bigger
+                    
+                    savedStat.textContent = `${savedPercent}%`;
+                    
+                    if (newSize >= originalSize) {
+                        savedStat.style.color = 'var(--text-muted)';
+                        savedStat.textContent = '0% (Already optimal)';
+                    } else {
+                        savedStat.style.color = 'var(--success)';
+                    }
 
-                resultsState.style.display = 'block';
+                    processingState.style.display = 'none';
+                    
+                    const downloadUrl = URL.createObjectURL(compressedPdfBlob);
+                    const originalName = (sourcePdfFile && sourcePdfFile.name) ? sourcePdfFile.name.replace('.pdf', '') : 'document';
+                    downloadBtn.href = downloadUrl;
+                    downloadBtn.download = `${originalName}_compressed.pdf`;
+
+                    resultsState.style.display = 'block';
+                }, 400); // Wait for 100% animation to finish
             } catch (error) {
                 console.error(error);
+                clearInterval(progressInterval);
                 alert('Something went wrong. The PDF might be corrupted or heavily encrypted.');
                 processingState.style.display = 'none';
                 optionsState.style.display = 'block';
             }
-        }, 100);
+        }, 800 * compressionTimeMultiplier);
     });
 
     downloadBtn.addEventListener('click', () => {

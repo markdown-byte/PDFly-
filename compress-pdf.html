@@ -74,22 +74,11 @@
                         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg>
                         Choose PDF to Optimize
                     </div>
-                    <div class="uploader-badges">
-                        <span class="format-badge">PDF format</span>
-                        <span class="format-badge">Lossless metadata cleanup</span>
-                    </div>
                 </div>
                 <div id="error-msg" class="error-message"></div>
-                <div class="privacy-badge-banner">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
-                    100% Private · Processing occurs locally on your machine
-                </div>
             </div>
 
             <div id="options-state" style="display: none;">
-                <div class="disclaimer-box">
-                    <strong>💡 Privacy Notice:</strong> Compression is executed 100% client-side by rebuilding document trees and removing orphaned objects. Your file is never transmitted across the network.
-                </div>
                 
                 <div class="file-meta-box">
                     <div class="file-meta-item">
@@ -99,6 +88,21 @@
                     <div class="file-meta-item">
                         <span>📊 Original Size:</span>
                         <strong id="original-size-display" style="color: var(--primary);"></strong>
+                    </div>
+                </div>
+                
+                <div class="compression-level-selector">
+                    <div class="level-option">
+                        <input type="radio" name="compression-level" id="level-low" value="low">
+                        <label for="level-low">Low</label>
+                    </div>
+                    <div class="level-option">
+                        <input type="radio" name="compression-level" id="level-medium" value="medium" checked>
+                        <label for="level-medium">Medium</label>
+                    </div>
+                    <div class="level-option">
+                        <input type="radio" name="compression-level" id="level-high" value="high">
+                        <label for="level-high">High</label>
                     </div>
                 </div>
                 
@@ -115,8 +119,12 @@
                 <div class="spinner-wrapper">
                     <div class="spinner"></div>
                 </div>
-                <h2>Optimizing your PDF...</h2>
-                <p>Rebuilding document stream and removing redundant objects.</p>
+                <h2 id="processing-title">Optimizing your PDF...</h2>
+                <p id="processing-subtitle">Rebuilding document stream and removing redundant objects.</p>
+                <div class="progress-bar-container">
+                    <div class="progress-bar" id="compress-progress-bar"></div>
+                </div>
+                <div class="status-text" id="compress-status-text" style="margin-top: 0.5rem;">0%</div>
             </div>
 
             <div id="results-state" class="results-state">
@@ -154,26 +162,7 @@
             <script async="async" data-cfasync="false" src="https://pl31015963.profitableratecpmnetwork.com/fa796b72269265eaf5ee6b53c3078aa0/invoke.js"></script>
         </div>
 
-        <section class="content-section">
-            <h2>
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
-                How to Compress a PDF
-            </h2>
-            <div class="guide-step-list">
-                <div class="guide-step-item">
-                    <div class="guide-step-num">1</div>
-                    <div><strong>Upload document</strong>: Drop your PDF file into the upload zone above.</div>
-                </div>
-                <div class="guide-step-item">
-                    <div class="guide-step-num">2</div>
-                    <div><strong>Start optimization</strong>: Click "Compress & Optimize" to remove bloat, unused elements, and duplicated streams.</div>
-                </div>
-                <div class="guide-step-item">
-                    <div class="guide-step-num">3</div>
-                    <div><strong>Save storage</strong>: View the exact space saved and download your lightweight PDF file.</div>
-                </div>
-            </div>
-        </section>
+
     </main>
 
     <footer>

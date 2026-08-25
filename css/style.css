@@ -13,13 +13,13 @@
   --text-muted: #64748b;
   --text-inverse: #ffffff;
 
-  /* Refined, Cohesive Accent (Deep Slate / Precision Indigo) */
+  /* Refined, Cohesive Accent (Modern Indigo/Purple) */
   --primary: #1e293b;
   --primary-hover: #0f172a;
   --primary-light: #f1f5f9;
-  --primary-accent: #2563eb;
-  --primary-accent-hover: #1d4ed8;
-  --primary-accent-light: rgba(37, 99, 235, 0.08);
+  --primary-accent: #6366f1;
+  --primary-accent-hover: #4f46e5;
+  --primary-accent-light: rgba(99, 102, 241, 0.08);
 
   /* Status Colors */
   --success: #059669;
@@ -63,9 +63,9 @@
   --primary: #f8fafc;
   --primary-hover: #ffffff;
   --primary-light: rgba(255, 255, 255, 0.08);
-  --primary-accent: #3b82f6;
-  --primary-accent-hover: #60a5fa;
-  --primary-accent-light: rgba(59, 130, 246, 0.15);
+  --primary-accent: #818cf8;
+  --primary-accent-hover: #a5b4fc;
+  --primary-accent-light: rgba(129, 140, 248, 0.15);
 
   --border-color: rgba(255, 255, 255, 0.09);
   --border-color-hover: rgba(255, 255, 255, 0.18);
@@ -1047,6 +1047,44 @@ header {
   font-weight: 600;
   font-size: 0.92rem;
   color: var(--text-primary);
+}
+
+/* Compression Level Selector */
+.compression-level-selector {
+  display: flex;
+  gap: 0.5rem;
+  background: var(--bg-surface-subtle);
+  padding: 0.35rem;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--border-color);
+  margin-bottom: 1.5rem;
+}
+
+.level-option {
+  flex: 1;
+  text-align: center;
+}
+
+.level-option input[type="radio"] {
+  display: none;
+}
+
+.level-option label {
+  display: block;
+  padding: 0.65rem 1rem;
+  border-radius: var(--radius-pill);
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.level-option input[type="radio"]:checked + label {
+  background: var(--bg-surface);
+  color: var(--primary-accent);
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--border-color);
 }
 
 /* Processing State */
