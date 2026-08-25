@@ -1429,8 +1429,20 @@ footer {
   }
 
   .tools-grid {
-    grid-template-columns: 1fr;
-    gap: 1rem;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.75rem;
+  }
+
+  .tool-card {
+    padding: 1rem;
+  }
+  
+  .tool-card h3 {
+    font-size: 1rem;
+  }
+  
+  .tool-card p {
+    font-size: 0.8rem;
   }
 
   .workspace {
