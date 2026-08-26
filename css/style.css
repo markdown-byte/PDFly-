@@ -247,7 +247,7 @@ header {
    ======================================================== */
 .hero {
   text-align: center;
-  padding: 4rem 0 2.5rem;
+  padding: 2.5rem 0 0.75rem;
 }
 
 .hero-pill-badge {
@@ -283,7 +283,7 @@ header {
   font-size: clamp(1rem, 2vw, 1.18rem);
   color: var(--text-secondary);
   max-width: 620px;
-  margin: 0 auto 2rem;
+  margin: 0 auto 0.5rem;
   line-height: 1.6;
 }
 
@@ -321,12 +321,12 @@ header {
    TOOLS GRID SECTION (Uniform & Professional)
    ======================================================== */
 .tools-section {
-  padding: 2.5rem 0 4.5rem;
+  padding: 1rem 0 3.5rem;
 }
 
 .section-header {
   text-align: center;
-  margin-bottom: 2.5rem;
+  margin-bottom: 1.5rem;
 }
 
 .section-tag {
@@ -1413,7 +1413,7 @@ footer {
   }
 
   .hero {
-    padding: 2.5rem 0 1.75rem;
+    padding: 1.5rem 0 0.5rem;
   }
 
   .hero h1 {
@@ -1484,7 +1484,7 @@ footer {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 2.5rem auto;
+  margin: 1rem auto;
   max-width: 100%;
   overflow: hidden;
   text-align: center;
