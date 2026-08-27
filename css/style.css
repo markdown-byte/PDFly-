@@ -1495,6 +1495,18 @@ footer {
   max-width: 100%;
 }
 
+.ad-banner-slot iframe,
+.ad-banner-slot img {
+  max-width: 100% !important;
+}
+
+@media (max-width: 640px) {
+  .ad-banner-slot {
+    min-height: 50px;
+    margin: 0.75rem auto;
+  }
+}
+
 /* ========================================================
    ARTICLE, LEGAL & CONTACT PAGE STYLES
    ======================================================== */
