@@ -133,6 +133,84 @@
         </div>
 
 
+        <!-- SEO Educational Content & FAQ Section -->
+        <section class="content-section" style="margin-top: 3.5rem;">
+            <div class="section-header" style="text-align: left; margin-bottom: 2rem;">
+                <div class="section-tag">Guide &amp; Insights</div>
+                <h2 style="font-size: 1.8rem; margin-bottom: 0.6rem;">How to Split PDF Pages Online for Free</h2>
+                <p style="color: var(--text-secondary); max-width: 720px;">
+                    Extract specific pages or custom intervals from large documents quickly and securely without uploading files to remote servers.
+                </p>
+            </div>
+
+            <div class="article-body">
+                <h3>Why Split a PDF Document?</h3>
+                <p>
+                    Large PDF documents often contain dozens or hundreds of pages when you only need a single invoice, a signed signature page, a specific chapter, or an individual schematic. Splitting enables you to isolate and share only the exact pages needed, saving storage, reducing clutter, and protecting unnecessary confidential sections from being seen by third parties.
+                </p>
+
+                <h3>How Client-Side PDF Extraction Works</h3>
+                <p>
+                    Unlike conventional online PDF splitters that upload your entire file to cloud servers, <strong>PDF Toolkit performs document extraction 100% inside your browser</strong>:
+                </p>
+                <ul>
+                    <li><strong>Page Tree Copying:</strong> Our engine reads the internal PDF object catalog and isolates only the specific page dictionaries you have selected.</li>
+                    <li><strong>Resource Preservation:</strong> Associated fonts, images, vector illustrations, and color profiles belonging to the extracted pages are cleanly copied into a brand-new PDF container.</li>
+                    <li><strong>Zero Compression Artifacts:</strong> The content streams are transplanted losslessly without re-compressing or rasterizing vector text.</li>
+                    <li><strong>Guaranteed Confidentiality:</strong> Your document is parsed within your computer's RAM. No network packets containing your document are sent anywhere.</li>
+                </ul>
+
+                <h3>Supported Page Range Syntax</h3>
+                <p>
+                    You can specify any combination of individual pages and page intervals using commas and hyphens:
+                </p>
+                <ul>
+                    <li><code>1-5</code>: Extracts pages 1 through 5 inclusive.</li>
+                    <li><code>2, 4, 7</code>: Extracts only pages 2, 4, and 7.</li>
+                    <li><code>1-3, 5, 8-10</code>: Combines both intervals and individual pages into a continuous new PDF.</li>
+                </ul>
+
+                <!-- Tool Specific FAQs -->
+                <div class="section-header" style="text-align: left; margin: 3rem 0 1.5rem;">
+                    <div class="section-tag">Got Questions?</div>
+                    <h2 style="font-size: 1.6rem;">Frequently Asked Questions About Splitting PDFs</h2>
+                </div>
+
+                <div class="faq-container" style="max-width: 100%;">
+                    <div class="faq-card">
+                        <h3>
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                            Can I extract non-consecutive pages into a single document?
+                        </h3>
+                        <p>Yes. Simply separate the pages with commas (e.g. <code>1, 4, 9</code>). The tool will extract only those specific pages and bind them together into your new PDF.</p>
+                    </div>
+
+                    <div class="faq-card">
+                        <h3>
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                            Does splitting a PDF reduce its visual quality or formatting?
+                        </h3>
+                        <p>No. Splitting is a lossless operation. Text remain fully selectable, fonts stay sharp, and embedded images maintain their original native resolution.</p>
+                    </div>
+
+                    <div class="faq-card">
+                        <h3>
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                            What happens to the original PDF document?
+                        </h3>
+                        <p>Your original file remains completely untouched on your device. The split tool simply generates a new independent PDF containing only the pages you requested.</p>
+                    </div>
+
+                    <div class="faq-card">
+                        <h3>
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                            Is there any limit to the number of pages a PDF can have?
+                        </h3>
+                        <p>You can split documents containing hundreds of pages. Since processing runs on your local CPU and RAM, performance is fast and unrestricted by server quotas.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
     </main>
 
     <footer>
@@ -155,7 +233,7 @@
                 <h4>PDF Tools</h4>
                 <ul class="footer-links-list">
                     <li><a href="merge-pdf.html">Merge PDF</a></li>
-                    <li><a href="split-pdf.html">Split PDF</a></li>
+                    <li><a href="split-pdf.html" class="active" style="color: var(--primary-accent); font-weight: 600;">Split PDF</a></li>
                     <li><a href="compress-pdf.html">Compress PDF</a></li>
                     <li><a href="jpg-to-pdf.html">JPG to PDF</a></li>
                     <li><a href="pdf-to-jpg.html">PDF to JPG</a></li>
@@ -163,11 +241,12 @@
             </div>
 
             <div class="footer-links-group">
-                <h4>Security & Privacy</h4>
+                <h4>Security &amp; Legal</h4>
                 <ul class="footer-links-list">
-                    <li><a href="#">Privacy Guarantee</a></li>
-                    <li><a href="#">Terms of Service</a></li>
-                    <li><a href="#">Client-Side Architecture</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="privacy.html">Privacy Policy</a></li>
+                    <li><a href="terms.html">Terms of Service</a></li>
+                    <li><a href="contact.html">Contact Support</a></li>
                 </ul>
             </div>
         </div>
