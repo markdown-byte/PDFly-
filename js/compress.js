@@ -164,9 +164,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 800 * compressionTimeMultiplier);
     });
 
-    downloadBtn.addEventListener('click', () => {
-        if (window.triggerDirectAd) window.triggerDirectAd();
-    });
 
     startOverBtn.addEventListener('click', () => {
         if (downloadBtn.href && downloadBtn.href.startsWith('blob:')) {
